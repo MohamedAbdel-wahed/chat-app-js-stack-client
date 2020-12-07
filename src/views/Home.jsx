@@ -27,11 +27,7 @@ const GET_NEW_MESSAGE_ON_WS= gql`
 function Home() {
     if(!localStorage.getItem('token')) window.location.href="/login"
     
-
- 
-
     const [hidden,setHidden]= useState(true)
-
 
     const { dispatch }= useContext(AuthContext)
     const { msgState, msgDispatch } = useContext(MessagesContext)
@@ -48,7 +44,6 @@ function Home() {
        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentUser])
 
-
     const {data:newMsgData, error:newMsgError}= useSubscription(GET_NEW_MESSAGE_ON_WS)
         
    useEffect(()=>{
@@ -56,8 +51,6 @@ function Home() {
         newMsgData && msgDispatch(addMessage(newMsgData.newMessage))
    },[newMsgData])
       
-
-   
 
     return (
         <div id="home" className="md:flex">
@@ -68,11 +61,11 @@ function Home() {
                </div>
            </div>
             {
-                 selectedUser && selectedUser.username ? (<Messages {...currentUser} />) : 
-                        (<div id="messages" className="h-screen flex-1 flex flex-col justify-center items-center">
-                              <img src="/svg/sleeping.svg" alt="sleeping emoji" className="block -mt-20 w-24 sm:w-32"/>
-                              <h1 className="text-center mt-10 text-xl sm:text-2xl md:text-4xl font-bold text-gray-600">Select friends to chat with..</h1>
-                        </div>)
+                selectedUser && selectedUser.username ? (<Messages {...currentUser} hidden={hidden} />) : 
+                    (<div id="messages" className="h-screen flex-1 flex flex-col justify-center items-center">
+                            <img src="/svg/sleeping.svg" alt="sleeping emoji" className="block -mt-20 w-24 sm:w-32"/>
+                            <h1 className="text-center mt-10 text-xl sm:text-2xl md:text-4xl font-bold text-gray-600">Select friends to chat with..</h1>
+                    </div>)
             }
         </div>
     )

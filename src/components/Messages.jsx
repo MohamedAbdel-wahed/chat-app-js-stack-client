@@ -13,7 +13,7 @@ const GET_MESSAGES= gql`
     }
 `
 
-function Messages({username,imgPath}) {
+function Messages({username,imgPath,hidden}) {
 
      if(!localStorage.getItem('token')) window.location.href="/login"
 
@@ -52,7 +52,7 @@ function Messages({username,imgPath}) {
                     </div>
                 </div>
             </div>
-             <div id="messages_body" ref={scrollToBottom} className="pt-3 pb-5 px-2 xs:px-6 sm:px-8 md:px-10 overflow-auto overflow-x-hidden select-none">
+             <div id="messages_body" ref={scrollToBottom} className={`${hidden && 'relative z-40'} pt-3 pb-5 px-2 xs:px-6 sm:px-8 md:px-10 overflow-auto overflow-x-hidden select-none`}>
                 {
                     messages && messages.map(({uuid,to,from,content,createdAt},index)=>{
                         const authUser= from===username
@@ -78,7 +78,7 @@ function Messages({username,imgPath}) {
                 }
             </div>
             {
-                selectedUser && (<NewMessage recepient={selectedUser.username} />)
+                selectedUser && (<NewMessage hidden={hidden} recepient={selectedUser.username} />)
             }
        </div>
     )
