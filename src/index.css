@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#navbar {
+  height: 6vh; 
+}
+
+.active {
+  color: rgb(116, 9, 158);
+  border-bottom: 3px solid rgb(166 127 239);
+}
+
+#app_content {
+  height: 94vh;
+}
+
+#sidebar {
+  height: 94vh;
+  background: #F2F5F5
+}
+
+#friends {
+  height: 66vh
+}
+
+#edit, #explore, #requests {
+  height:94vh
+}
+
+#edit_box, #explore_box {
+  height: 85vh
+}
+
+#requests {
+  background-color: rgb(241, 241, 241);
+}
+
+#requests_box {
+  height: 70vh
+}
+
+.selected_avatar {
+  border:3px solid rgb(81, 113, 241);
+  background: rgb(200, 227, 245)
+}
+
+#messages_body {
+  height: 65.5vh
+}
+
+#messages_form {
+  height: 19vh;
+}
