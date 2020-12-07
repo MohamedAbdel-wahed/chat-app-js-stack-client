@@ -18,3 +18,4 @@ export const getCurrentUser= (currentUser)=> {
         payload: currentUser
     }
 }
+
