@@ -58,3 +58,8 @@
 #messages_form {
   height: 19vh;
 }
+
+#messages_form > form > div {
+  position: relative;
+  z-index: 100;
+}
