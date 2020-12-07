@@ -26,7 +26,7 @@ const authLink = setContext((_, { headers }) => {
 httpLink= authLink.concat(httpLink)
 
 const wsLink = new WebSocketLink({
-  uri: `ws://https://pensa-chat.herokuapp.com/graphql`,
+  uri: `https://pensa-chat.herokuapp.com/graphql`,
   options: {
     reconnect: true,
     connectionParams: {
